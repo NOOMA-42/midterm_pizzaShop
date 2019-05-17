@@ -22,7 +22,7 @@ export default class Order extends Component{
                     <Modal.Title>Pizza Fairy</Modal.Title>
                 </Modal.Header>
                     <Modal.Body>
-                        <Image src={require("../../images/pizzafairy.png")} rounded />
+                        <Image src={require('../../images/pizzafairy.png')} rounded />
                     Woohoo, you're ordering your custom pizza!
                 </Modal.Body>
                 <Modal.Footer>
@@ -38,7 +38,7 @@ export default class Order extends Component{
                     <Row>
                         <Col>
                             <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src="holder.js/100px180" />
+                                <Card.Img variant="top" src={require('../../images/about-1-600x400.jpg')} />
                             <Card.Body>
                                 <Card.Title>Custom Pizza</Card.Title>
                                 <Card.Text>
@@ -50,7 +50,7 @@ export default class Order extends Component{
                         </Col>
                         <Col>
                             <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src="holder.js/100px180" />
+                            <Card.Img variant="top" src={require('../../images/about-2-600x400.jpg')} />
                             <Card.Body>
                                 <Card.Title>Shoping Cart</Card.Title>
                                 <Card.Text>
