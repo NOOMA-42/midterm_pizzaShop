@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 import { Modal, Col, Card, Row, Container, Button, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default class Order extends Component{
     constructor(props, context) {
@@ -17,7 +18,7 @@ export default class Order extends Component{
     render() {
         return(
             <>
-                <Modal onHide={this.handleClose}>
+                <Modal show={this.state.show} onhide={this.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Pizza Fairy</Modal.Title>
                 </Modal.Header>
@@ -26,15 +27,16 @@ export default class Order extends Component{
                     Woohoo, you're ordering your custom pizza!
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleClose}>
+                    <Button variant="primary" onClick={this.handleClose}>
                     Close
                     </Button>
                 </Modal.Footer>
                 </Modal>
                 <Container>
                     <Row>
-                        <section></section>
+                        <section classname="h-3"></section>
                     </Row>
+                    
                     <Row>
                         <Col>
                             <Card style={{ width: '18rem' }}>
@@ -44,7 +46,7 @@ export default class Order extends Component{
                                 <Card.Text>
                                 Make, Make
                                 </Card.Text>
-                                <Button variant="primary">Make it</Button>
+                                <Link to="/order/diy/topping"><Button variant="primary">Make it</Button></Link>
                             </Card.Body>
                             </Card>
                         </Col>
@@ -56,10 +58,13 @@ export default class Order extends Component{
                                 <Card.Text>
                                 Eat, Eat
                                 </Card.Text>
-                                <Button variant="primary">Let's </Button>
+                                <Button variant="primary">Pay</Button>
                             </Card.Body>
                             </Card>
                         </Col>
+                    </Row>
+                    <Row>
+                        <section></section>
                     </Row>
                 </Container>
             </>

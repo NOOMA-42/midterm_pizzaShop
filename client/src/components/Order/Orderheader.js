@@ -13,7 +13,6 @@ export default () => {
 				<a className="menu-nav-icon" data-menu="#main-menu" href="c"><i className="ion-navicon"></i></a>
 
 				<ul className="main-menu font-mountainsre" id="main-menu">
-					<li><Link to="/">HOME</Link></li>
 				</ul>
 			
 				<div className="clearfix"></div>

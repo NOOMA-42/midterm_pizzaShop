@@ -25,6 +25,9 @@ import ContactBox from '../components/Contact/ContactBox';
 // Order
 import Order from '../components/Order/Order';
 import Orderheader from '../components/Order/Orderheader';
+import Orderfooter from '../components/Order/Orderfooter';
+// Order-DIY your ordering
+import DiyPizza from '../components/DiyPizza/DiyPizza';
 // <script src="plugin-frameworks/swiper.js"></script>
 
 export default class App extends Component {
@@ -47,8 +50,8 @@ class PageRouter extends Component{
 					<Route exact path='/blog' component={Page("blog")} />
 					<Route exact path='/contact' component={Page("contact")} />
 					<Route exact path='/order' component={Page("order")} />
+					<Route path='/order/diy' component={Page("diyPizza")} />
 				</Switch>
-				<Footer />
 			</Fragment>
 		)
 	}
@@ -69,6 +72,7 @@ const pageContent = {
 			<StoryAreaMainPage />
 			<BestSeller />
 			<Menu />
+			<Footer />
 			</>
 		)
 	},
@@ -78,6 +82,7 @@ const pageContent = {
 			<Header />
 			<MainSlider type={"aboutUs"}/>
 			<StoryAreaAboutUs />
+			<Footer />
 			</>
 		)
 	},
@@ -87,6 +92,7 @@ const pageContent = {
 			<Header />
 			<MainSlider type={"menu"}/>
 			<PizzaMenu />
+			<Footer />
 			</>
 		)
 	},
@@ -96,6 +102,7 @@ const pageContent = {
 			<Header />
 			<MainSlider type={"blog"} />
 			<BlogSection />
+			<Footer />
 			</>
 		)
 	},
@@ -105,6 +112,7 @@ const pageContent = {
 			<Header />
 			<MainSlider type={"contact"} />
 			<ContactBox />
+			<Footer />
 			</>
 		)
 	},
@@ -113,6 +121,16 @@ const pageContent = {
 			<>
 			<Orderheader />
 			<Order />
+			<Orderfooter />
+			</>
+		)
+	},
+	diyPizza: ()=>{
+		return (
+			<>
+			<Orderheader />
+			<DiyPizza />
+			<Orderfooter />
 			</>
 		)
 	}
