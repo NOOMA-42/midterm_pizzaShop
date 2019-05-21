@@ -11,13 +11,13 @@ const toppingData = [
 ]    
 
 
-export default () => {
+export default (props) => {
+    const { dragIn } = props;
     return(
         <ListGroup style={{display: 'inline-block'}}>
             {toppingData.map((toppingData) => (
-                <Topping key={toppingData.id} img={toppingData.img} />
+                <Topping id={toppingData.id} img={toppingData.img} dragIn={dragIn}/>
             ))}
         </ListGroup>
     )
-    
 }

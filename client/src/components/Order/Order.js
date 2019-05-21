@@ -50,7 +50,19 @@ export default class Order extends Component{
                             </Card.Body>
                             </Card>
                         </Col>
-                        <Col>
+                        
+                    </Row>
+                    <Row>
+                        <section></section>
+                    </Row>
+                </Container>
+            </>
+        )
+    }
+}
+
+/*
+<Col>
                             <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" src={require('../../images/about-2-600x400.jpg')} />
                             <Card.Body>
@@ -62,12 +74,4 @@ export default class Order extends Component{
                             </Card.Body>
                             </Card>
                         </Col>
-                    </Row>
-                    <Row>
-                        <section></section>
-                    </Row>
-                </Container>
-            </>
-        )
-    }
-}
+*/

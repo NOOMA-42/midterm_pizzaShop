@@ -5,7 +5,8 @@
   "scripts": {
     "server": "npm run devstart --prefix api",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "NOOMA_42",
   "license": "ISC",

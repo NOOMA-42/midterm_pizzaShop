@@ -6,14 +6,15 @@ import HTML5Backend from 'react-dnd-html5-backend'
                  
 
 export default (props) => {
-    const { topping } = props;
+    const { topping, dragIn } = props;
+    //console.log(props);
     return(
         <>
             <DragDropContextProvider backend={HTML5Backend}>
                 <h3 className="center-text">Choose {topping} topping!</h3>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex", "margin-top": "10px"}}>
                     <DndCrust />
-                    <DndTopping/>
+                    <DndTopping dragIn={dragIn}/>
                 </div>
             </DragDropContextProvider> 
         </>

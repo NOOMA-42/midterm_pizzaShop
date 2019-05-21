@@ -18,32 +18,48 @@ export default class DiyPizza extends Component {
             lastPage: this.routeOrder[0],
             currentPage: this.routeOrder[1],
             nextPage: this.routeOrder[2], 
-        }
-
-        // props of every page
-    
-        this.checkOutProps = {
-    
+            toppingSpec: {
+                mushroom: 0,
+                pepperoni: 0,
+                green_pepper: 0,
+                black_olive: 0,
+                onion: 0,
+            },
+            toppingPrice: 0,
         }
     }
+
+    // fetching price on the server
+	componentDidMount() {
+		this.callApi()
+			.then(res => this.setState({ toppingPrice: res.express }))
+			.catch(err => console.log(err));
+	}
+	callApi = async () => {
+		const response = await fetch('/order');
+		const body = await response.json();
+		if (response.status !== 200) throw Error(body.message);
+		return body;
+	};
+
     // topping page function
     toppingPlus = () => {
-        if (this.state.topping < 3) {
+        if (this.state.toppingNum < 3) {
             this.setState((state) => ({
-                topping: state.topping + 1
+                toppingNum: state.toppingNum + 1
             }));
         }
     }
 
     toppingMinus = () => {
-        if (this.state.topping > 0) {
+        if (this.state.toppingNum > 0) {
             this.setState((state) => ({
-                topping: state.topping - 1
+                toppingNum: state.toppingNum - 1
             }));
         }
     }
     ///////////////////////////////////
-    
+
     //LRbtn function
     btnLonClick = () => {
         this.setState((state) => ({
@@ -59,6 +75,18 @@ export default class DiyPizza extends Component {
             lastPage: this.routeOrder[state.pageNum + 1 - 1],
             currentPage: this.routeOrder[state.pageNum  + 1],
             nextPage: this.routeOrder[state.pageNum + 1 + 1], 
+        }));
+    }
+    ///////////////////////////////////
+
+    // Drag and drop function
+    dragIn = (toppinName) => {
+        console.log(this.state.toppingSpec[toppinName]);
+        this.setState((state) => ({
+            toppingSpec: {
+                [state.toppingSpec[toppinName]]: state.toppingSpec[toppinName] + 1,
+            }
+            
         }));
     }
     ///////////////////////////////////
@@ -80,8 +108,8 @@ export default class DiyPizza extends Component {
                 </Col>
                 <Col xs={10} md={8}>
                     <Route exact path="/order/diy/topping" render={() => <DecideTopping onClick={{toppingPlus: this.toppingPlus, toppingMinus: this.toppingMinus}} topping={this.state.toppingNum}/>}/>
-                    <Route exact path="/order/diy/dnd" render={() => <DndPizza topping={this.state.toppingNum} />} />
-                    <Route path="/order/diy/checkout" render={(checkOutProps) => <CheckOut {...checkOutProps} />} />
+                    <Route exact path="/order/diy/dnd" render={() => <DndPizza topping={this.state.toppingNum} toppingSpec={this.state.toppingSpec} dragIn={this.dragIn}/>} />
+                            <Route path="/order/diy/checkout" render={(checkOutProps) => <CheckOut toppingSpec={this.dragIn} topping={this.state.toppingNum} toppingP={this.state.toppingPrice}/>} />
                 </Col>
                 <Col>
                     <LRLinkBtn pos='R' route={this.state.nextPage} onClick={this.btnRonClick}/>

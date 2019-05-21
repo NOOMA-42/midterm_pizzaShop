@@ -22,14 +22,16 @@ export default DragSource(
     ItemType.TOPPING,
     {
         beginDrag: props => {
-            return { name: props.key, img: props.img }
+            return { name: props.id, img: props.img }
         },
         endDrag(props, monitor) {
-        const item = monitor.getItem()
-        const dropResult = monitor.getDropResult()
-        if (dropResult) {
-            alert(`You dropped ${item.name} into ${dropResult.name}!`)
-        }
+            const item = monitor.getItem();
+            const dropResult = monitor.getDropResult();
+            const { dragIn } = props;
+            dragIn(item.name);
+            if (dropResult) {
+                alert(`You chose ${item.name}!`)
+            }
         },
     },
     (connect, monitor) => ({

@@ -7,10 +7,6 @@ const pizzaCrust = {
     width: '400px',
 }
 
-const target = {
-    drop: () => ({ name: 'Crust' }),
-}
-
 const Crust = ({ canDrop, isOver, connectDropTarget }) => {
     const isActive = canDrop && isOver
     let opacity = 1;
@@ -32,7 +28,9 @@ const Crust = ({ canDrop, isOver, connectDropTarget }) => {
 
 export default DropTarget(
     ItemType.TOPPING,
-    target,
+    {
+        drop: () => ({ name: 'Crust' }),
+    },
     (connect, monitor) => ({
       connectDropTarget: connect.dropTarget(),
       isOver: monitor.isOver(),
