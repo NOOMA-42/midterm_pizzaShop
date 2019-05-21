@@ -33,7 +33,8 @@ export default class DiyPizza extends Component {
 	componentDidMount() {
 		this.callApi()
 			.then(res => this.setState({ toppingPrice: res.express }))
-			.catch(err => console.log(err));
+            .catch(err => console.log(err));
+        
 	}
 	callApi = async () => {
 		const response = await fetch('/order');
@@ -109,7 +110,7 @@ export default class DiyPizza extends Component {
                 <Col xs={10} md={8}>
                     <Route exact path="/order/diy/topping" render={() => <DecideTopping onClick={{toppingPlus: this.toppingPlus, toppingMinus: this.toppingMinus}} topping={this.state.toppingNum}/>}/>
                     <Route exact path="/order/diy/dnd" render={() => <DndPizza topping={this.state.toppingNum} toppingSpec={this.state.toppingSpec} dragIn={this.dragIn}/>} />
-                            <Route path="/order/diy/checkout" render={(checkOutProps) => <CheckOut toppingSpec={this.dragIn} topping={this.state.toppingNum} toppingP={this.state.toppingPrice}/>} />
+                    <Route path="/order/diy/checkout" render={(checkOutProps) => <CheckOut toppingSpec={this.dragIn} topping={this.state.toppingNum} toppingP={this.state.toppingPrice}/>} />
                 </Col>
                 <Col>
                     <LRLinkBtn pos='R' route={this.state.nextPage} onClick={this.btnRonClick}/>

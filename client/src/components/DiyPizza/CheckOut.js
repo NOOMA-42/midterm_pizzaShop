@@ -5,7 +5,8 @@ export default (props) => {
     return (
         <>
             <h3 className="center-text">Your total topping is {topping}</h3>
-            <h3 className="center-text">Total price is {topping * toppingP}</h3>
         </>
     )
 }
+
+//            <h3 className="center-text">Total price is {topping * toppingP}</h3>
